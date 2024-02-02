@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/PAPAD_INVOICE_BILL_GENERATOR/static/css/main.d2dbac45.css",
-    "main.js": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/main.01c6b285.js",
+    "main.css": "/PAPAD_INVOICE_BILL_GENERATOR/static/css/main.d93a0dfe.css",
+    "main.js": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/main.e47a66b0.js",
     "static/js/703.bd335cbb.chunk.js": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/703.bd335cbb.chunk.js",
     "static/js/379.91a9fe01.chunk.js": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/379.91a9fe01.chunk.js",
     "static/js/787.7692eb9b.chunk.js": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/787.7692eb9b.chunk.js",
     "static/media/logo.svg": "/PAPAD_INVOICE_BILL_GENERATOR/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/PAPAD_INVOICE_BILL_GENERATOR/index.html",
-    "main.d2dbac45.css.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/css/main.d2dbac45.css.map",
-    "main.01c6b285.js.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/main.01c6b285.js.map",
+    "main.d93a0dfe.css.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/css/main.d93a0dfe.css.map",
+    "main.e47a66b0.js.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/main.e47a66b0.js.map",
     "703.bd335cbb.chunk.js.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/703.bd335cbb.chunk.js.map",
     "379.91a9fe01.chunk.js.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/379.91a9fe01.chunk.js.map",
     "787.7692eb9b.chunk.js.map": "/PAPAD_INVOICE_BILL_GENERATOR/static/js/787.7692eb9b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d2dbac45.css",
-    "static/js/main.01c6b285.js"
+    "static/css/main.d93a0dfe.css",
+    "static/js/main.e47a66b0.js"
   ]
 }
