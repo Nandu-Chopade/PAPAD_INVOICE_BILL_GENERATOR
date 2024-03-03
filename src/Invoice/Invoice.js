@@ -102,7 +102,7 @@ const Invoice = () => {
   
     html2pdf(element, {
       margin: 10,
-      filename: `${formattedDates}' PapadInvoice.pdf'`,
+      filename: `${formattedDates} PapadInvoice.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'legal', orientation: 'landscape' },
