@@ -1,18 +1,16 @@
-// Invoice.js
 import React, { useState } from 'react';
 import html2pdf from 'html2pdf.js';
 import './Invoice.css';
 
 const Invoice = () => {
-  const [parcelDate, setParcelDate] = useState('');
+  const [parcelDate, setParcelDate] = useState(formatDate(new Date()));
   const [selectedProduct, setSelectedProduct] = useState('');
   const [quantity, setQuantity] = useState('');
   const [pricePerKg, setPricePerKg] = useState('');
-  const [travelCharges, setTravelCharges] = useState('');
-  const [autoRikshaCharges, setAutoRikshaCharges] = useState('');
-  const [packagingCharges, setPackagingCharges] = useState('');
+  const [travelCharges, setTravelCharges] = useState(0);
+  const [autoRikshaCharges, setAutoRikshaCharges] = useState(0);
+  const [packagingCharges, setPackagingCharges] = useState(0);
   const [papads, setPapads] = useState([]);
- 
 
   const products = ['Nagali Papad', 'Jwari Papad', 'Makka Papad', 'Tandul Papad'];
 
@@ -40,12 +38,8 @@ const Invoice = () => {
   };
   const countingOfQuantity = papads.reduce((totalQuantity, papad) => totalQuantity + papad.quantity, 0);
   const handleGenerateInvoice = () => {
-   
-    const formattedDates = new Intl.DateTimeFormat('en-US', {
-        month:'short',
-        day: 'numeric',
-        year: 'numeric',
-      }).format(new Date(parcelDate));
+    const formattedDates = formatDate(new Date(parcelDate));
+
     const invoiceContent = `
     <div class="bill-container" style=" max-width: 1180px; margin: 20px auto; padding: 20px; border: 5px solid brown; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
     <div class="bill-header" style="text-align: center; padding-bottom: 10px; border-bottom: 1px solid brown;">
@@ -92,7 +86,7 @@ const Invoice = () => {
         </tr>
       </tbody>
     </table>
-    <h1 style="font-weight: bold;">BY NANDU CHOPAE JAMNER</h1>
+    <h3 style="text-align:center; font-weight: bold;"> @ All Rights Reserved 2024 Design By Nandu Chopade</h3>
   </div>
   
     `;
@@ -108,8 +102,6 @@ const Invoice = () => {
       jsPDF: { unit: 'mm', format: 'legal', orientation: 'landscape' },
     });
   };
-  
-
 
   return (
     <div className="invoice-container">
@@ -121,16 +113,17 @@ const Invoice = () => {
       </label>
 
       <label className="custom-input">
-  SELECT PRODUCT:
-  <select className="custom-select" value={selectedProduct} onChange={(e) => setSelectedProduct(e.target.value)}>
-    <option value="" disabled>Select Papad Type</option>
-    {products.map((product, index) => (
-      <option key={index} value={product}>
-        {product}
-      </option>
-    ))}
-  </select>
-</label>
+        SELECT PRODUCT:
+        <select className="custom-select" value={selectedProduct} onChange={(e) => setSelectedProduct(e.target.value)}>
+          <option value="" disabled>Select Papad Type</option>
+          {products.map((product, index) => (
+            <option key={index} value={product}>
+              {product}
+            </option>
+          ))}
+        </select>
+      </label>
+
       <label className="custom-input">
         QUANTITY (KG):
         <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
@@ -146,33 +139,31 @@ const Invoice = () => {
       </button>
 
       {papads.length > 0 && (
-  <div className="papad-list">
-    <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>ADDED PAPADS:</h3>
-    <table className="styled-table">
-      <thead>
-        <tr>
-          <th>PRODUCT</th>
-          <th>QUANTITY(KG)</th>
-          <th>PRICE PER KG</th>
-        </tr>
-      </thead>
-      <tbody>
-        {papads.map((papad, index) => (
-          <tr key={index}>
-            <td className="uppercase">{papad.product}</td>
-            <td className="center-text">{papad.quantity}</td>
-            <td className="center-text">{papad.pricePerKg}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-
+        <div className="papad-list">
+          <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>ADDED PAPADS:</h3>
+          <table className="styled-table">
+            <thead>
+              <tr>
+                <th>PRODUCT</th>
+                <th>QUANTITY(KG)</th>
+                <th>PRICE PER KG</th>
+              </tr>
+            </thead>
+            <tbody>
+              {papads.map((papad, index) => (
+                <tr key={index}>
+                  <td className="uppercase">{papad.product}</td>
+                  <td className="center-text">{papad.quantity}</td>
+                  <td className="center-text">{papad.pricePerKg}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       <div>
-         <p style={{'margin-bottom':'10px', 'font-weight':'bold'}}>CHARGES TO BE APPLIED ON PARCEL:</p> 
+        <p style={{ 'margin-bottom': '10px', 'font-weight': 'bold' }}>CHARGES TO BE APPLIED ON PARCEL:</p>
         <label className="custom-input">
           TRAVEL CHARGES:
           <input type="number" value={travelCharges} onChange={(e) => setTravelCharges(e.target.value)} />
@@ -186,12 +177,20 @@ const Invoice = () => {
           <input type="number" value={packagingCharges} onChange={(e) => setPackagingCharges(e.target.value)} />
         </label>
       </div>
-  
+
       <button className="generate-button" onClick={handleGenerateInvoice}>
         GENERATE INVOICE
       </button>
     </div>
   );
+};
+
+// Function to format date as "04-03-2024"
+const formatDate = (date) => {
+  const dd = String(date.getDate()).padStart(2, '0');
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const yyyy = date.getFullYear();
+  return `${dd}-${mm}-${yyyy}`;
 };
 
 export default Invoice;
