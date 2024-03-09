@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router , Routes } from 'react-router-dom';
+import { Route, HashRouter as Router , Routes } from 'react-router-dom';
 import './App.css';
 import DateCalculator from './Calculate Previous Occurrence of Selected Day/CustomeDate';
 import Invoice from './Invoice/Invoice';
